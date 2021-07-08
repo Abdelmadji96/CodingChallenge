@@ -1,0 +1,65 @@
+{
+  "version": "0.0.1",
+  "private": true,
+  "description": "New Swagger API Project",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "main": "app.js",
+  "dependencies": {
+    "@sendgrid/mail": "^6.5.5",
+    "@types/request": "^2.0.2",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "csv-writer": "^1.5.0",
+    "csvjson": "^5.1.0",
+    "express": "^4.12.3",
+    "express-pdf": "^1.2.2",
+    "git": "^0.1.5",
+    "google-auth-library": "^6.0.5",
+    "googleapis": "^54.0.0",
+    "http": "0.0.0",
+    "https": "^1.0.0",
+    "json2csv": "^4.5.1",
+    "jsonwebtoken": "^8.5.0",
+    "lodash": "^4.17.15",
+    "moment": "^2.29.1",
+    "mongoose": "^5.7.8",
+    "mongoose-simple-random": "^0.4.1",
+    "nexe": "^4.0.0-beta.18",
+    "node-fetch": "^2.6.1",
+    "node-twitter-api": "^1.8.0",
+    "nodemailer": "^6.4.6",
+    "nodemailer-smtp-transport": "^2.7.4",
+    "nodemon": "^1.19.1",
+    "oauth": "^0.9.15",
+    "oauth-signature": "^1.5.0",
+    "path": "^0.12.7",
+    "phantomjs-prebuilt": "^2.1.16",
+    "request": "^2.88.2",
+    "save": "^2.4.0",
+    "sendmail": "^1.6.1",
+    "swagger": "^0.7.5",
+    "swagger-express-mw": "^0.7.0",
+    "validator": "^12.2.0",
+    "xoauth2": "^1.2.0"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0",
+    "should": "^7.1.0",
+    "supertest": "^1.0.0"
+  },
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "jest --watchAll"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Abdelmadji96/Coding-Challenge"
+  },
+  "homepage": "https://github.com/Abdelmadji96/Coding-Challenge#readme"
+}
