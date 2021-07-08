@@ -1,0 +1,201 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: Coding challenge
+  description: This API contains evey interation with the guys in the operations
+# during dev, should point to your local machine
+host: localhost:10000
+# basePath prefixes all resource paths
+basePath: /v1
+#
+schemes:
+  # tip: remove http to make production-grade
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+paths:
+  
+  /text:
+    x-swagger-router-controller: text
+    post:
+      operationId: addText
+      description: add content Text with language
+      parameters:
+        - in: body
+          name: body
+          schema:
+            type: object
+
+      responses:
+        200:
+          description: Add text success
+        300:
+          description: Faild to add text.
+    get:
+      operationId: getAlltext
+      description: get All texts without pagination 
+      responses:
+        200:
+          description: Get texts success
+        300:
+          description: Failed to get texts
+
+  /texts/language/{lng}:
+    x-swagger-router-controller: text
+    get:
+      operationId: getAllTextWithLang
+      description: get all texts filter by language 
+      responses:
+        200:
+          description: Get texts success
+        300:
+          description: Failed to get texts 
+      parameters:
+        - in: path
+          name: lng
+          required: true
+          type: string
+          description: language
+
+  /text/language/{lng}/{page}/{limit}:
+    x-swagger-router-controller: text
+    get:
+      operationId: getTextsLangPagination
+      description: get texts filter by lang and paged
+      responses:
+        200:
+          description: Get texts success
+        300:
+          description: Failed to get texts
+      parameters:
+        - in: path
+          name: lng
+          required: true
+          type: string
+          description: lng of texts       
+        - in: path
+          name: page
+          required: true
+          type: string
+          description: page of texts       
+        - in: path
+          name: limit
+          required: true
+          type: string
+          description: size of texts
+  
+  /text/{page}/{limit}:
+    x-swagger-router-controller: text
+    get:
+      operationId: getTextsPagination
+      description: get texts paged
+      responses:
+        200:
+          description: Get texts success
+        300:
+          description: Failed to get texts
+      parameters:     
+        - in: path
+          name: page
+          required: true
+          type: string
+          description: page of texts       
+        - in: path
+          name: limit
+          required: true
+          type: string
+          description: size of texts
+
+  /text/{textId}:
+    x-swagger-router-controller: text
+    parameters:
+      - in: path
+        name: textId
+        required: true
+        description: id of the text
+        type: string
+    put:
+      parameters:
+        - in: body
+          name: body
+          schema:
+            type: object
+      operationId: setText
+      description: UpDate contentof ,language of text
+      responses:
+        200:
+          description: OK sent
+        300:
+          description: Faild to modify text.
+        404:
+          description : Text not found
+    delete:
+      operationId: deleteText
+      description: delete Text by id
+      responses:
+        200:
+          description: OK
+        300:
+          description: Fail
+        404:
+          description : Text not found
+
+  /text/{textId}/count/{language}:
+    x-swagger-router-controller: text
+    parameters:
+      - in: path
+        name: textId
+        required: true
+        description: id of the text
+        type: string
+      - in: path
+        name: language
+        required: true
+        description: language of the text
+        type: string
+    get:
+      operationId: countWord
+      description: Fetch total number word of text by ID 
+      responses:
+        200:
+          description: get countWord success
+        300:
+          description: Faild to get count text.
+        404:
+          description : Text not found
+
+  /mostOccurrent:
+    x-swagger-router-controller: text
+    get:
+      operationId: mostOccurrent
+      description: Get the most recurrent word in the whole text database
+      responses:
+        200:
+          description: get most recurrent word success
+        300:
+          description: Faild to get most recurrent word .
+
+  /text-search/{search}:
+    x-swagger-router-controller: text
+    parameters:
+        - in: path
+          name: search
+          description: text query q
+          required: true
+          type: string
+    get:
+      operationId: searchText
+      description:  Fetch text based on fuzzy search using query q (content || language)
+      responses:
+        200:
+          description: Get texts searched success
+        300:
+          description: Failed to get texts
+     
+   
+   
+ 
